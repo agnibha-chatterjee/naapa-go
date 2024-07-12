@@ -5,6 +5,7 @@ import "net/http"
 type Handler func(w http.ResponseWriter, r *http.Request)
 
 type Router struct {
+	Name   string
 	Routes []*Route
 }
 
@@ -13,8 +14,8 @@ type Route struct {
 	Handler Handler
 }
 
-func New() *Router {
-	return &Router{}
+func New(name string) *Router {
+	return &Router{Name: name}
 }
 
 func (r *Router) RegisterRoute(path string, handler Handler) {

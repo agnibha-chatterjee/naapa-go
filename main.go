@@ -8,9 +8,8 @@ import (
 
 func main() {
 	s := server.Init()
-	healthCheckRouter := router.New()
+	healthCheckRouter := router.New("health-check")
 	healthCheckRouter.RegisterRoute("GET /status", handlers.HealthCheck)
 	s.AddRouter(healthCheckRouter)
-
 	s.Listen()
 }
