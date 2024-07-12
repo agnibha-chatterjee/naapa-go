@@ -4,12 +4,14 @@ import (
 	"naapa-go/server"
 	"naapa-go/server/handlers"
 	"naapa-go/server/router"
+
+	_ "github.com/joho/godotenv/autoload"
 )
 
 func main() {
 	s := server.Init()
-	healthCheckRouter := router.New("health-check")
-	healthCheckRouter.RegisterRoute("GET /status", handlers.HealthCheck)
-	s.AddRouter(healthCheckRouter)
+	h := router.New("health-check")
+	h.RegisterRoute("GET /status", handlers.HealthCheck)
+	s.AddRouter(h)
 	s.Listen()
 }
