@@ -14,7 +14,7 @@ func main() {
 	h.RegisterRoute("GET /status", handlers.HealthCheck)
 
 	t := router.New("task-router")
-	t.RegisterRoute("GET /execute-task", handlers.HandleExecuteTask)
+	t.RegisterRoute("POST /execute-task", handlers.HandleExecuteTask)
 
 	s.AddRouter(h)
 	s.AddRouter(t)
